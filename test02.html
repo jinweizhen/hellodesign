@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="header">
+
+    <div style=" float:left; height:100%; width:400px;"><%-- background-image:url('images/master_bg.jpg')--%>
+
+    </div>
+    <div style=" float:right; text-align:right; height:30px;line-height:30px; margin:70px 30px 5px auto">
+        <a href="/" >切换到前台</a> |
+        <a href="#" onclick="if(confirm('你真的要退出系统吗？')){document.location.href='/Manager/Logon.aspx?out=true';}" >退出</a>
+    </div>
+</div>
+<div class="conetent">
+    <div class="sidebar" id="div_Sidebar">
+        <div class="item" >
+            <h6>用户管理</h6>
+            <ul>
+                <li><a href="/Manager/User/UserList.aspx">用户列表</a></li>
+                <li><a href="/Manager/User/AddUser.aspx">添加用户</a></li>
+                <li><a href="/Manager/User/UpdatePassword.aspx">修改密码</a></li>
+                <li><a href="/Manager/User/Safety.aspx">设置密码保护</a></li>
+                <li><a href="javascript:;" onclick="if(confirm('你真的要退出系统吗？')){document.location.href='/Manager/Logon.aspx?out=true';}" >安全退出</a></li>
+            </ul>
+        </div>
+        <div class="item" >
+            <h6>公司管理</h6>
+            <ul>
+                <li><a href="/Manager/Company/CompanyList.aspx">公司列表</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="conetent_center">
+        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+        </asp:contentplaceholder>
+    </div>
+</div>
+
+</body>
+
+
+<script type='text/javascript'>
+
+    (function(){
+
+
+
+        var div_Sidebar = $('div_Sidebar');
+        var menuList = div_Sidebar.getElementsByTagName('a');
+        var url = document.location.href;
+        var hrefUrl = '';
+        if(menuList==null || typeof(menuList)=='undefined')
+        { return;}
+        var index=0;
+        for(;index < menuList.length;index++)
+        {
+            hrefUrl = menuList[index].href;
+            hrefUrl = hrefUrl.substr(hrefUrl.lastIndexOf('/')+1);
+            if(hrefUrl!='' && hrefUrl != '/')
+            {
+                if(url.indexOf(hrefUrl) > 0 )
+                {
+                    break;
+                }
+            }
+        }
+        if(index <  menuList.length)
+        {
+            menuList[index].id = 'a_Checked'; // 我用的ID选择器
+        }
+
+
+    })();
+
+</script>
+</body>
+</html>

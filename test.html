@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style>
+        *{margin:0; padding:0;}
+        ul{list-style:none;}
+        li{float:left; width:100px; margin-right:20px; display:inline;}
+        li a{width:100px; display:block; background:#F00; text-align:center;}
+    </style>
+</head>
+
+<body>
+
+
+<div id="nav">
+    <ul id="com">
+        <li class="li_1"><a class="home" href="#">首页</a></li>
+        <li class="li_2"><a href="#">新闻中心</a></li>
+        <li class="li_3"><a href="#">商务中心</a></li>
+        <li class="li_4"><a href="#">买产品</a></li>
+        <li class="li_5"><a href="#">卖产品</a></li>
+        <li class="li_6"><a href="#">找商户</a></li>
+        <li class="li_7"><a href="#">价格指数</a></li>
+        <li class="li_8"><a href="$#">市场介绍</a></li>
+    </ul>
+</div>
+<div style=" clear:both;"></div>
+<div id="box">
+    <div style="display:none;">首页</div>
+    <div style="display:none;">新闻中心</div>
+    <div style="display:none;">商务中心</div>
+    <div style="display:none;">买产品</div>
+    <div style="display:none;">卖产品</div>
+    <div style="display:none;">找商户</div>
+    <div style="display:none;">价格指数</div>
+    <div style="display:none;">市场介绍</div>
+</div>
+<script>
+    var a = document.getElementById('nav').getElementsByTagName('a'),
+            len = a.length,
+            divs = document.getElementById('box').getElementsByTagName('div');
+
+    for(var i = 0; i < len; i++){
+        !function(i){
+            a[i].onclick = function(){
+                for(var j = 0; j < len; j++){a[j].style.background = '#F00';divs[j].style.display = 'none';}
+                this.style.background = '#393';
+                divs[i].style.display = 'block';
+            };
+        }(i);
+    }
+</script>
+</body>
+</html>
